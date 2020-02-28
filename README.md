@@ -123,6 +123,31 @@ library(manyfold)
 #> 11      ¦   °--Barcelona   1
 #> 12      °--Andalusia        
 #> 13          °--Sevilla     1
+ 
+## It works on columns containing things other than strings too:
+ print(manyfold(mtcars), limit = 20)
+#>                                          levelName
+#> 1  Root                                           
+#> 2   ¦--21:2                                       
+#> 3   ¦   °--6:2                                    
+#> 4   ¦       °--160:2                              
+#> 5   ¦           °--110:2                          
+#> 6   ¦               °--3.9:2                      
+#> 7   ¦                   ¦--2.62:1                 
+#> 8   ¦                   ¦   °--16.46:1            
+#> 9   ¦                   ¦       °--0:1            
+#> 10  ¦                   ¦           °--1:1        
+#> 11  ¦                   ¦               °--4:1    
+#> 12  ¦                   ¦                   °--4:1
+#> 13  ¦                   °--2.875:1                
+#> 14  ¦                       °--17.02:1            
+#> 15  ¦                           °--0:1            
+#> 16  ¦                               °--1:1        
+#> 17  ¦                                   °--4:1    
+#> 18  ¦                                       °--4:1
+#> 19  ¦--22.8:2                                     
+#> 20  ¦   °--... 1 nodes w/ 18 sub                  
+#> 21  °--... 23 nodes w/ 296 sub
 ```
 
 ## Help & feedbacks wanted\!
