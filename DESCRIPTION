@@ -1,0 +1,17 @@
+Package: manyfold
+Title: Explore Data by Folding Columns
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Alexandre",
+           family = "Courtiol",
+           role = c("aut", "cre"),
+           email = "alexandre.courtiol@gmail.com",
+           comment = c(ORCID = "0000-0003-0637-2959"))
+Description: This package turns columns into nested list which can be displayed as a tree like structure.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    data.tree
+RoxygenNote: 7.0.2
+Roxygen: list(markdown = TRUE)

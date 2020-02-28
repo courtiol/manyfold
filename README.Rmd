@@ -1,0 +1,70 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# dfuzz
+
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![CRAN status](https://www.r-pkg.org/badges/version/manyfold)](https://CRAN.R-project.org/package=manyfold)
+<!-- badges: end -->
+
+The goal of __{manyfold}__ is to help you turns columns from your `data.frame` or `tibble` into a nested list which can be displayed as a tree like structure.
+
+This package is __highly experimental__ and only contain a single function for now.
+
+It is build around a single dependency: [__{data.tree}__](https://github.com/gluc/data.tree), and it is possible to use the full power of the functions from this excellent package on the output created by __{manyfold}__.
+
+
+## Installation
+
+You can install this package using __{remotes}__ (or __{devtools}__):
+
+```r
+remotes::install_github("courtiol/manyfold")
+```
+
+## Example
+
+```{r example}
+library(manyfold)
+
+## Create a toy dataset:
+ table <- data.frame(country = c("France", "France", "France", "France",
+                                 "Spain", "Spain"),
+                     region = c("Herault", "Herault", "Aude", "Paris",
+                                "Catalonia", "Andalusia"),
+                     city = c("Montpellier", "Montpellier", "Narbonne", "Paris",
+                              "Barcelona", "Sevilla"))
+
+ table
+
+## Manyfold without specifying columns (takes them all in the order they come):
+ manyfold(table)
+
+## Manyfold with column specification:
+ manyfold(table, "country", "region", "city")
+
+## The order of the columns matters:
+ manyfold(table, "region", "city", "country")
+
+## Another way for displaying counts:
+ print(manyfold(table, "country", "region", "city", count = FALSE), "N")
+```
+
+## Help \& feedbacks wanted!
+
+If you find that this package is an idea worth pursuing, please let me know.
+Developing is always more fun when it becomes a collaborative work.
+So please also email me (or leave an issue) if you want to get involved!
