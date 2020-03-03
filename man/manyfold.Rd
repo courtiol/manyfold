@@ -7,16 +7,14 @@
 manyfold(.data, ..., count = TRUE, count_sep = ":", missing = "UNKNOWN")
 }
 \arguments{
-\item{.data}{the data.frame or tibble to use}
+\item{.data}{the .data.frame or tibble to use}
 
 \item{...}{the columns to use to build the tree, quoted and separated by
 commas, starting with the broadest classifier on the left}
 
-\item{count}{whether or not to plot in the tree the number of row
-corresponding to each classification (default = TRUE)}
+\item{count}{whether or not add the number of rows in the level names (default = TRUE)}
 
-\item{count_sep}{which separator to use when plotting counts in the tree
-(default = ":")}
+\item{count_sep}{which separator to use when combining counts to level names (default = ":")}
 
 \item{missing}{how to call NA in the tree (default = "UNKNOWN")}
 }

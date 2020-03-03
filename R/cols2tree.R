@@ -9,14 +9,10 @@
 #' helps you do that.
 #'
 #'
-#' @param .data the data.frame or tibble to use
+#' @inheritParams df2hierchlist
+#' @param .data the .data.frame or tibble to use
 #' @param ... the columns to use to build the tree, quoted and separated by
 #'   commas, starting with the broadest classifier on the left
-#' @param count whether or not to plot in the tree the number of row
-#'   corresponding to each classification (default = TRUE)
-#' @param count_sep which separator to use when plotting counts in the tree
-#'   (default = ":")
-#' @param missing how to call NA in the tree (default = "UNKNOWN")
 #'
 #' @return an object of class `Node` on which many further actions are possible
 #'   (see [`data.tree()`][`data.tree::data.tree`])
@@ -49,22 +45,6 @@
 #'
 manyfold <- function(.data, ..., count = TRUE, count_sep = ":", missing = "UNKNOWN") {
 
-  data2list <- function(vars, data, listrec) {
-    if (length(vars) == 0) return(list(N = paste(nrow(data))))
-    var_to_do <- vars[1]
-    for (level in unique(data[[var_to_do]])) {
-      data_temp <- data[data[[var_to_do]] == level, ]
-      if (is.na(level))  data_temp <- data[is.na(data[[var_to_do]]), ]
-      if (nrow(data_temp) > 0) {
-        level_name <- level
-        if (is.na(level_name)) level_name <- missing
-        if (count) level_name <- paste0(level_name, count_sep, nrow(data_temp))
-        listrec[[level_name]] <- data2list(vars[-1], data_temp, listrec[[level_name]])
-      }
-    }
-    listrec
-  }
-
   call <- match.call(expand.dots = FALSE)
   vars_to_do <- unlist(call[["..."]])
   if (is.null(vars_to_do)) {
@@ -75,7 +55,13 @@ manyfold <- function(.data, ..., count = TRUE, count_sep = ":", missing = "UNKNO
     stop("variable(s) not in the dataset!")
   }
 
-  list_rec <- data2list(vars_to_do, .data, list())
+  list_rec <- df2hierchlist(data = .data,
+                            vars = vars_to_do,
+                            listrec = list(),
+                            count = count,
+                            count_sep = count_sep,
+                            missing = missing)
+
   data.tree::FromListSimple(list_rec)
 }
 
