@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 
 The goal of __{manyfold}__ is to help you turns columns from your `data.frame` or `tibble` into a nested list which can be displayed as a tree like structure.
 
-This package is __highly experimental__ and only contain a single function for now.
+This package is __highly experimental__ and only contain a few functions for now.
 
 It is build around a single dependency: [__{data.tree}__](https://github.com/gluc/data.tree), and it is possible to use the full power of the functions from this excellent package on the output created by __{manyfold}__.
 

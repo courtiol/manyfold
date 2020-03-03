@@ -15,8 +15,8 @@ The goal of **{manyfold}** is to help you turns columns from your
 `data.frame` or `tibble` into a nested list which can be displayed as a
 tree like structure.
 
-This package is **highly experimental** and only contain a single
-function for now.
+This package is **highly experimental** and only contain a few functions
+for now.
 
 It is build around a single dependency:
 [**{data.tree}**](https://github.com/gluc/data.tree), and it is possible
